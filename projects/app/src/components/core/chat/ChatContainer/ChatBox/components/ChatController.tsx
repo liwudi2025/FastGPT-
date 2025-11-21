@@ -30,12 +30,13 @@ const controlIconStyle = {
   cursor: 'pointer',
   p: '5px',
   bg: 'white',
-  borderRight: 'base'
+  mr: 1
 };
 const controlContainerStyle = {
   className: 'control',
   color: 'myGray.400',
-  display: 'flex'
+  display: 'flex',
+  alignItems: 'center'
 };
 
 const ChatController = ({
@@ -69,16 +70,7 @@ const ChatController = ({
   return (
     <Flex
       {...controlContainerStyle}
-      borderRadius={'sm'}
-      overflow={'hidden'}
-      border={'base'}
-      // 最后一个子元素，没有border
-      css={css({
-        '& > *:last-child, & > *:last-child svg': {
-          borderRight: 'none',
-          borderRadius: 'md'
-        }
-      })}
+      gap={1}
     >
       <MyTooltip label={t('common:Copy')}>
         <MyIcon
@@ -120,13 +112,12 @@ const ChatController = ({
                 <MyTooltip label={t('common:core.chat.tts.Stop Speech')}>
                   <MyIcon
                     {...controlIconStyle}
-                    borderRight={'none'}
                     name={'core/chat/stopSpeech'}
                     color={'#E74694'}
                     onClick={cancelAudio}
                   />
                 </MyTooltip>
-                <MyImage src="/icon/speaking.gif" w={'23px'} alt={''} borderRight={'base'} />
+                <MyImage src="/icon/speaking.gif" w={'23px'} alt={''} />
               </Flex>
             );
           }
